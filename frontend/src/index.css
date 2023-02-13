@@ -1,0 +1,175 @@
+html
+{
+  z-index: -999;
+  background-color: #FB923C;  
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.brand {
+  font-family: 'Lobster', cursive;
+}
+
+.images {
+  height:3rem;
+  width:3rem
+}
+
+.logos{
+  height:2rem;
+  width:2rem
+}
+
+.fontx{
+  font-size: 1.5vw !important
+}
+
+.fullnav {
+  z-index: 55;
+  background-color: #FDBA74
+}
+
+.black{
+  color:black !important
+}
+
+.pages {
+  background-color: #FB923C
+}
+
+.custom-toggler.navbar-toggler {
+  border-color: black ;
+}
+
+.tagline {
+  color:black;
+  font-family: 'Dancing Script', cursive;
+  font-weight: bold;
+  text-align: center;
+}
+
+.most{
+  color:black;
+  font-family: 'Dancing Script', cursive;
+  font-weight: bold
+}
+
+@media screen and (max-width : 576px)
+{
+  .most
+  {
+    font-size:5vw !important;
+  }
+  .card-img-top {
+    width: 100%;
+    height: 25vw;
+    object-fit: cover;
+  }
+}
+@media screen and (min-width : 576px) and (max-width : 768px)
+{
+  .most
+  {
+    font-size:4vw !important;
+  }
+  .card-img-top {
+    width: 100%;
+    height: 20vw;
+    object-fit: cover;
+  }
+}
+
+@media screen and (min-width : 768px) and (max-width : 992px)
+{
+  .most
+  {
+    font-size:3vw !important;
+  }
+  .card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+  }
+}
+@media screen and (min-width : 992px) and (max-width : 1200px)
+{
+  .most
+  {
+    font-size:2.5vw !important;
+  }
+  .tagline {
+    font-size: 3vw !important;
+  }
+  .card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+  }
+}
+@media screen and (min-width : 1200px) and (max-width : 1400px)
+{
+  .most
+  {
+    font-size:2.5vw !important;
+  }
+  .tagline {
+    font-size: 3vw !important;
+  }
+  .card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+  }
+}
+@media screen and (min-width : 1400px)
+{
+  .most
+  {
+    font-size:2.5vw !important;
+  }
+  .tagline {
+    font-size: 3vw !important;
+  }
+  .card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+  }
+}
+.card-body{
+  background-color: #FDBA74;  
+}
+
+.card{
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+  transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+  cursor: pointer;
+  border-color: #FDBA74 !important;
+}
+
+.card:hover{
+  transform: scale(1.05);
+box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+
+
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
