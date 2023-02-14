@@ -1,3 +1,6 @@
+import {Link} from 'react-router-dom'
+
+
 const Navbar = () => {
     return (
         <div class="fullnav rounded mx-1 z-1 shadow sticky-top">
@@ -12,29 +15,28 @@ const Navbar = () => {
                     <div className="collapse navbar-collapse justify-content-center align-center" id="main-nav">
                         <ul className="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center" aria-current="page" href="#home">
+                                <Link class="nav-link d-flex align-items-center" aria-current="page" to="/">
                                     <span class="black">Home</span>
                                     <img class="img-fluid mx-1 logos"src="https://cdn-icons-png.flaticon.com/128/25/25694.png" alt="" />
-                                </a>
+                                </Link>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center" href="#allrecipes">
+                                <Link class="nav-link d-flex align-items-center" to="/allrecipes">
                                     <span class="black">All Recipes</span>
                                     <img class="img-fluid mx-1 logos"src="https://cdn-icons-png.flaticon.com/512/684/684831.png" alt="" />
-                                </a>
+                                </Link>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center" href="#addrecipe">
+                                <Link class="nav-link d-flex align-items-center" to="/addrecipe">
                                     <span class="black">Add Recipes</span>
                                     <img class="img-fluid mx-1 logos"src="https://cdn-icons-png.flaticon.com/512/2413/2413311.png" alt="" />
-                                </a>
+                                </Link>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center" href="#contactus">
+                                <Link class="nav-link d-flex align-items-center" to="/contactus">
                                     <span class="black">Contact Us</span> 
                                     <img class="img-fluid mx-1 logos"src="https://cdn-icons-png.flaticon.com/512/2354/2354127.png" alt=""/>
-                                </a>
-                                
+                                </Link>
                             </li>
                         </ul>
                     </div>
@@ -48,28 +50,28 @@ const Navbar = () => {
                     <div class="collapse navbar-collapse" id="navbarText">
                         <ul class="navbar-nav me-auto mb-0 mb-lg-0 ">
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center fontx" aria-current="page" href="#home">
+                                <Link class="nav-link d-flex align-items-center fontx" aria-current="page" to="/">
                                     <span class="black">Home</span>
                                     <img class="img-fluid mx-1 logos"src="https://cdn-icons-png.flaticon.com/128/25/25694.png" alt="" />
-                                </a>
+                                </Link>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center fontx" href="#allrecipes">
+                                <Link class="nav-link d-flex align-items-center fontx" to="/allrecipes">
                                     <span class="black">All Recipes</span>
                                     <img class="img-fluid mx-1 logos"src="https://cdn-icons-png.flaticon.com/512/684/684831.png" alt="" />
-                                </a>
+                                </Link>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center fontx" href="#addrecipe">
+                                <Link class="nav-link d-flex align-items-center fontx" to="/addrecipe">
                                     <span class="black">Add Recipes</span>
                                     <img class="img-fluid mx-1 logos"src="https://cdn-icons-png.flaticon.com/512/2413/2413311.png" alt="" />
-                                </a>
+                                </Link>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center fontx" href="#contactus">
+                                <Link class="nav-link d-flex align-items-center fontx" to="/contactus">
                                     <span class="black">Contact Us</span> 
                                     <img class="img-fluid mx-1 logos"src="https://cdn-icons-png.flaticon.com/512/2354/2354127.png" alt=""/>
-                                </a>
+                                </Link>
                                 
                             </li>
                         </ul>

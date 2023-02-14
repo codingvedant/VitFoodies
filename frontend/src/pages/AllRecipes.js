@@ -5,7 +5,7 @@ const AllRecipes = () => {
     return ( 
         <div className="allrecipes">
             <Navbar />
-            <div className="content">
+            <div className="content container-lg justify-content-center">
             <RecipeList />
             </div>
         </div>
