@@ -3,7 +3,7 @@ const express = require('express')
 const recipesRoutes = require('./routes/recipes')
 const mongoose = require('mongoose')
 mongoose.set('strictQuery',true)
-
+const cors = require('cors');
 
 const app = express()
 

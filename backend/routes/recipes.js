@@ -1,7 +1,10 @@
 const express = require('express')
 const { createRecipe,getRecipe,getRecipes,deleteRecipe,updateRecipe } = require('../controllers/recipeController')
-const router = express.Router()
+const cors = require('cors')
+const app = express()
 
+const router = express.Router()
+router.use(cors());
 router.get('/',getRecipes)
 
 router.get('/:id',getRecipe)
