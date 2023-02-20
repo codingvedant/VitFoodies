@@ -33,7 +33,6 @@ const createRecipe = async(req,res) =>{
     catch(error){
         res.status(400).json({error:error.message})
     }
-    res.json({mssg:'POST a new recipe'})
 }
 
 const deleteRecipe = async(req,res) =>{
