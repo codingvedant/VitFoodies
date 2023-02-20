@@ -1,4 +1,4 @@
-import RecipeList from "./RecipeList";
+import RecipeListAll from "./RecipeListAll";
 import Navbar from "./Navbar";
 
 const AllRecipes = () => {
@@ -7,7 +7,7 @@ const AllRecipes = () => {
             <Navbar />
             <div className="content container-lg justify-content-center">
             <h2 class=" py-2 m-0 text-5xl tagline text-wrap">All Recipes:</h2>
-            <RecipeList />
+            <RecipeListAll />
             </div>
         </div>
      );

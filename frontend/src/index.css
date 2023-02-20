@@ -11,6 +11,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 code {
@@ -193,13 +194,19 @@ color: inherit;
   box-shadow: none !important;
 }
 
-.recipelist {
-  
+
+.inputarea{
+  background-color: #FDBA74 !important;
+  box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+  border-color: #FDBA74 !important;
 }
 
-
-
-
+.submitutton{
+  background-color: #FDBA74 !important;
+  font-weight: bolder !important;
+  box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+  border-color: #FDBA74 !important;
+}
 
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');

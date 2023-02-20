@@ -1,8 +1,10 @@
 import {BrowserRouter,Route,Switch} from 'react-router-dom'
 import Home from './pages/Home';
 import AllRecipes from "./pages/AllRecipes"
+import NotFound from './pages/NotFound';
 
 import RecipeDetails from './pages/RecipeDetails';
+import AddRecipe from './pages/AddRecipe';
 
 function App() {
   return (
@@ -21,6 +23,12 @@ function App() {
               </Route>
               <Route exact path="/recipes/:id">
               <RecipeDetails />
+              </Route>
+              <Route exact path="/addrecipe">
+              <AddRecipe />
+              </Route>
+              <Route path="*">
+                <NotFound />
               </Route>
             </Switch>
             
