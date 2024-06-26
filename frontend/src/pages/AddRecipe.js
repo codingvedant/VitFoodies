@@ -31,8 +31,8 @@ const AddRecipe = () => {
         <div className="addrecipe">
             <Navbar />
             <div className="content">
-                <header class="d-flex justify-content-center container-fluid align-items-center">
-                    <h2 class=" py-2 m-0 text-5xl tagline text-wrap">{`Share your delicious recipes with us !`}</h2>
+                <header className="d-flex justify-content-center container-fluid align-items-center">
+                    <h2 className=" py-2 m-0 text-5xl tagline text-wrap">{`Share your delicious recipes with us !`}</h2>
                 </header>
 
                 <div className="row justify-content-center my-4">
@@ -40,27 +40,27 @@ const AddRecipe = () => {
                     <div className="col-10 col-md-6">
                         <form onSubmit={handleSubmit}>
                             <div className="mb-3">
-                                <label for="recipename" className="form-label fw-semibold fs-4">Recipe Name:</label>
+                                <label htmlFor="recipename" className="form-label fw-semibold fs-4">Recipe Name:</label>
                                 <input type="text" required value={name} onChange={(e)=>setName(e.target.value)} className="form-control inputarea" id="recipename"/>
                             </div>
                             <div className="mb-3">
-                                <label for="chefname" className="form-label fw-semibold fs-4">Chef Name:</label>
+                                <label htmlFor="chefname" className="form-label fw-semibold fs-4">Chef Name:</label>
                                 <input type="text" required value={chef} onChange={(e)=>setChef(e.target.value)} className="form-control inputarea" id="chefname"/>
                             </div>
                             <div className="mb-3">
-                                <label for="time" className="form-label fw-semibold fs-4">Time to deliver:</label>
+                                <label htmlFor="time" className="form-label fw-semibold fs-4">Time to deliver:</label>
                                 <input type="number" required value={time} onChange={(e)=>setTime(e.target.value)} className="form-control inputarea" id="time"/>
                             </div>
                             <div className="mb-3">
-                                <label for="imagelink" className="form-label fw-semibold fs-4">Image Link:</label>
+                                <label htmlFor="imagelink" className="form-label fw-semibold fs-4">Image Link:</label>
                                 <input type="text" required value={img} onChange={(e)=>setImg(e.target.value)} className="form-control inputarea" id="imagelink"/>
                             </div>
                             <div className="mb-3">
-                                <label for="time" className="form-label fw-semibold fs-4">Recipe Description:</label>
-                                <textarea class="form-control inputarea" id="floatingTextarea2" ></textarea>
+                                <label htmlFor="time" className="form-label fw-semibold fs-4">Recipe Description:</label>
+                                <textarea className="form-control inputarea" id="floatingTextarea2" ></textarea>
                             </div>
-                           {!isPending && <button type="submit" class="btn submitutton">Submit</button>} 
-                           {isPending && <button type="submit" disabled class="btn submitutton">Adding Blog...</button>} 
+                           {!isPending && <button type="submit" className="btn submitutton">Submit</button>} 
+                           {isPending && <button type="submit" disabled className="btn submitutton">Adding Blog...</button>} 
                         </form>
                     </div>
                 </div>

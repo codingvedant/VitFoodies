@@ -5,6 +5,7 @@ import NotFound from './pages/NotFound';
 
 import RecipeDetails from './pages/RecipeDetails';
 import AddRecipe from './pages/AddRecipe';
+import Login from './pages/Login';
 
 function App() {
   return (
@@ -26,6 +27,9 @@ function App() {
               </Route>
               <Route exact path="/addrecipe">
               <AddRecipe />
+              </Route>
+              <Route exact path="/login">
+              <Login />
               </Route>
               <Route path="*">
                 <NotFound />
