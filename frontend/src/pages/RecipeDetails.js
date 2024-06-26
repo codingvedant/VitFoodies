@@ -30,19 +30,19 @@ const RecipeDetails = () => {
                         <div className="infocards card ">
                             <div className="card-body">
                                 <h5 className="card-title text-center">Servings</h5>
-                                <p class="card-text text-center">4 Servings</p>
+                                <p className="card-text text-center">4 Servings</p>
                             </div>
                         </div>
                         <div className="infocards card">
                             <div className="card-body">
                                 <h5 className="card-title text-center">Prep Time</h5>
-                                <p class="card-text text-center">{recipes.time} minutes</p>
+                                <p className="card-text text-center">{recipes.time} minutes</p>
                             </div>
                         </div>
                         <div className="infocards card">
                             <div className="card-body">
                                 <h5 className="card-title text-center">Calories</h5>
-                                <p class="card-text text-center">500 Calories</p>
+                                <p className="card-text text-center">500 Calories</p>
                             </div>
                         </div>   
                     </div>

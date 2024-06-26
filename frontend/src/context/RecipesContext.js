@@ -10,19 +10,29 @@ export const recipesReducer = (state,action) => {
             }
         case 'CREATE_RECIPE':
             return{
-                recipes:[action.payload,...state.recipes]
+                recipes:[action.payload, ...state.recipes]
             }
         default:
             return state
     }
 }
 
-export const RecipesContextProvider = ({children}) => {
-    const [state,dispatch]= useReducer(recipesReducer,{recipes:null})
+// export const RecipesContextProvider = ({children}) => {
+//     const [state,dispatch]= useReducer(recipesReducer,{recipes:null})
 
-    return(
-        <RecipesContext.Provider value={{...state,dispatch}}>
+//     return(
+//         <RecipesContext.Provider value={{...state,dispatch}}>
+//             {children}
+//         </RecipesContext.Provider>
+//     )
+// }
+
+export const RecipesContextProvider = ({ children }) => {
+    const [state, dispatch] = useReducer(recipesReducer, { recipes: [] });
+
+    return (
+        <RecipesContext.Provider value={{ ...state, dispatch }}>
             {children}
         </RecipesContext.Provider>
-    )
-}
+    );
+};
