@@ -218,7 +218,7 @@ color: inherit;
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 100vh;
+  height: 75vh;
 }
 
 .Auth-form {
@@ -247,4 +247,19 @@ label {
   font-size: 14px;
   font-weight: 600;
   color: rgb(34, 34, 34);
+}
+
+.error {
+  color: red;
+  background-color: #ffe6e6;
+  border: 1px solid red;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.logout-button {
+  margin-left: 20px; /* Adjust the margin as needed */
 }

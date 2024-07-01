@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { RecipesContextProvider } from './context/RecipesContext';
+import { AuthContextProvider } from './context/AuthContext';
 
 // Bootstrap CSS
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -11,11 +12,13 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <RecipesContextProvider>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </RecipesContextProvider>
+  <React.StrictMode>
+    <AuthContextProvider> {/* Wrap your App with AuthContextProvider */}
+      <RecipesContextProvider> {/* Wrap your App with RecipesContextProvider */}
+          <App />
+      </RecipesContextProvider>
+    </AuthContextProvider>
+</React.StrictMode>
   
 );
 

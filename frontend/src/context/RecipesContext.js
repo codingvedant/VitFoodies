@@ -17,18 +17,8 @@ export const recipesReducer = (state,action) => {
     }
 }
 
-// export const RecipesContextProvider = ({children}) => {
-//     const [state,dispatch]= useReducer(recipesReducer,{recipes:null})
-
-//     return(
-//         <RecipesContext.Provider value={{...state,dispatch}}>
-//             {children}
-//         </RecipesContext.Provider>
-//     )
-// }
-
 export const RecipesContextProvider = ({ children }) => {
-    const [state, dispatch] = useReducer(recipesReducer, { recipes: [] });
+    const [state, dispatch] = useReducer(recipesReducer, { recipes:null });
 
     return (
         <RecipesContext.Provider value={{ ...state, dispatch }}>
