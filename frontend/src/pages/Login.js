@@ -1,23 +1,32 @@
 import React,{useState} from 'react'
+import {Link} from 'react-router-dom'
+import { useLogin } from '../hooks/useLogin'
+import Navbar from "./Navbar" 
+
 
 function Login() {
-    let [authMode, setAuthMode] = useState("signin")
 
-    const changeAuthMode = () => {
-      setAuthMode(authMode === "signin" ? "signup" : "signin")
+  const [email,setEmail] = useState('')
+    const [password,setPassword] = useState('')
+    const {login,error,isLoading} = useLogin()
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+
+        await login(email,password)
     }
-  
-    if (authMode === "signin") {
-      return (
-        <div className="Auth-form-container">
-          <form className="Auth-form">
+
+    return (
+      <div className="login">
+        <Navbar />
+        <div className="Auth-form-container"> 
+          <form className="Auth-form" onSubmit={handleSubmit}>
             <div className="Auth-form-content">
               <h3 className="Auth-form-title">Sign In</h3>
               <div className="text-center">
                 Not registered yet?{" "}
-                <span className="link-primary" onClick={changeAuthMode}>
-                  Sign Up
-                </span>
+                <Link className="link-primary" to="/signup">
+                Sign Up
+                </Link>
               </div>
               <div className="form-group mt-3">
                 <label>Email address</label>
@@ -25,6 +34,8 @@ function Login() {
                   type="email"
                   className="form-control mt-1"
                   placeholder="Enter email"
+                  onChange={(e)=>setEmail(e.target.value)}
+                  value={email}
                 />
               </div>
               <div className="form-group mt-3">
@@ -33,68 +44,24 @@ function Login() {
                   type="password"
                   className="form-control mt-1"
                   placeholder="Enter password"
+                  onChange={(e)=>setPassword(e.target.value)}
+                  value={password}
                 />
               </div>
               <div className="d-grid gap-2 mt-3">
-                <button type="submit" className="btn btn-primary">
+                <button disabled={isLoading} type="submit" className="btn btn-primary">
                   Submit
                 </button>
+                {error && <div className="error">{error}</div>}
               </div>
               <p className="text-center mt-2">
-                Forgot <a href="#">password?</a>
+                Forgot <a href="/">password?</a>
               </p>
             </div>
           </form>
-        </div>
-      )
-    }
-  
-    return (
-      <div className="Auth-form-container">
-        <form className="Auth-form">
-          <div className="Auth-form-content">
-            <h3 className="Auth-form-title">Sign In</h3>
-            <div className="text-center">
-              Already registered?{" "}
-              <span className="link-primary" onClick={changeAuthMode}>
-                Sign In
-              </span>
-            </div>
-            <div className="form-group mt-3">
-              <label>Full Name</label>
-              <input
-                type="email"
-                className="form-control mt-1"
-                placeholder="e.g Jane Doe"
-              />
-            </div>
-            <div className="form-group mt-3">
-              <label>Email address</label>
-              <input
-                type="email"
-                className="form-control mt-1"
-                placeholder="Email Address"
-              />
-            </div>
-            <div className="form-group mt-3">
-              <label>Password</label>
-              <input
-                type="password"
-                className="form-control mt-1"
-                placeholder="Password"
-              />
-            </div>
-            <div className="d-grid gap-2 mt-3">
-              <button type="submit" className="btn btn-primary">
-                Submit
-              </button>
-            </div>
-            <p className="text-center mt-2">
-              Forgot <a href="#">password?</a>
-            </p>
-          </div>
-        </form>
       </div>
+      </div>
+      
     )
 }
 
