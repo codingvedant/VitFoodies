@@ -14,9 +14,7 @@ const RecipeDetails = () => {
     const {user} = useAuthContext();
 
     const handleAddToCart = () => {
-        const userId = "667bcefa220d2bc508f00127"; // Replace with actual user ID from auth context
         const newItem = {
-            userId,
             recipeId: recipes._id,
             quantity: parseInt(quantity, 10),
         }; 
@@ -86,7 +84,7 @@ const RecipeDetails = () => {
 
                             <div className="price py-2">
                                 <h1 className="fs-3 fw-semibold">Price:</h1>
-                                <p>${recipes.price}</p>
+                                <p>₹{recipes.price}</p>
                             </div>
 
                             <div className="text-center">
