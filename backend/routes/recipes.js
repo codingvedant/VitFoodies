@@ -1,12 +1,10 @@
 const express = require('express');
 const { createRecipe, getRecipe, getRecipes, deleteRecipe, updateRecipe } = require('../controllers/recipeController');
 const cors = require('cors');
-//const requireAuth = require('../middleware/requireAuth');
 
 const router = express.Router();
 
 router.use(cors());
-// router.use(requireAuth); // Uncomment this if you want to secure the routes
 
 // Get all recipes
 router.get('/', getRecipes);

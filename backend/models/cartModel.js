@@ -3,11 +3,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const cartItemSchema = new Schema({
-    recipe: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Recipe',
-        required: true
-    },
     name: {
         type: String,
         required: true
@@ -29,38 +24,70 @@ const cartSchema = new Schema({
         type: Number,
         required: true,
         default: 0
+    },
+    user_id: {
+        type: String,
+        required: true
     }
 });
 
-cartSchema.methods.addToCart = async function(recipeId, name ,quantity, price) {
-    const existingItemIndex = this.items.findIndex(item => item.recipe.toString() === recipeId.toString());
-    if (existingItemIndex >= 0) {
-        this.items[existingItemIndex].quantity += quantity;
+// Define static methods
+cartSchema.statics.addToCart = async function(name, quantity, price, user_id) {
+    let cart = await this.findOne({ user_id });
+
+    if (!cart) {
+        cart = new this({ user_id });
+    }
+
+    const existingItem = cart.items.find(item => item.name === name);
+
+    if (existingItem) {
+        existingItem.quantity += quantity;
     } else {
-        this.items.push({ recipe: recipeId,name, quantity, price });
+        cart.items.push({ name, quantity, price });
     }
-    this.totalAmount += quantity * price;
-    await this.save();
+
+    cart.totalAmount += quantity * price;
+
+    await cart.save();
+    return cart;
 };
 
-cartSchema.methods.updateCartItem = async function(recipeId, quantity) {
-    const item = this.items.find(item => item.recipe.toString() === recipeId.toString());
+cartSchema.statics.updateCartItem = async function(name, quantity, user_id) {
+    let cart = await this.findOne({ user_id });
+    if (!cart) {
+        throw new Error('Cart not found');
+    }
+
+    const item = cart.items.find(item => item.name === name);
     if (item) {
-        this.totalAmount -= item.quantity * item.price;
+        cart.totalAmount -= item.quantity * item.price;
         item.quantity = quantity;
-        this.totalAmount += quantity * item.price;
-        await this.save();
+        cart.totalAmount += quantity * item.price;
+        await cart.save();
     }
+    return cart;
 };
 
-cartSchema.methods.removeCartItem = async function(recipeId) {
-    const itemIndex = this.items.findIndex(item => item.recipe.toString() === recipeId.toString());
+cartSchema.statics.removeCartItem = async function(name, user_id) {
+    let cart = await this.findOne({ user_id });
+    if (!cart) {
+        throw new Error('Cart not found');
+    }
+
+    const itemIndex = cart.items.findIndex(item => item.name === name);
     if (itemIndex >= 0) {
-        const item = this.items[itemIndex];
-        this.totalAmount -= item.quantity * item.price;
-        this.items.splice(itemIndex, 1);
-        await this.save();
+        const item = cart.items[itemIndex];
+        cart.totalAmount -= item.quantity * item.price;
+        cart.items.splice(itemIndex, 1);
+        await cart.save();
     }
+    return cart;
 };
 
-module.exports = mongoose.model('Cart', cartSchema);
+// Create and export the model
+const Cart = mongoose.model('Cart', cartSchema);
+module.exports = Cart;
+
+
+
