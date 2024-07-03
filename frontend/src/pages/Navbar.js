@@ -33,12 +33,12 @@ const Navbar = () => {
                                     <img className="img-fluid mx-1 logos" src="https://cdn-icons-png.flaticon.com/128/25/25694.png" alt="" />
                                 </Link>
                             </li>
-                            <li className="nav-item">
+                            {/* <li className="nav-item">
                                 <Link className="nav-link d-flex align-items-center" to="/allrecipes">
                                     <span className="black">All Recipes</span>
                                     <img className="img-fluid mx-1 logos" src="https://cdn-icons-png.flaticon.com/512/684/684831.png" alt="" />
                                 </Link>
-                            </li>
+                            </li> */}
                             <li className="nav-item">
                                 <Link className="nav-link d-flex align-items-center" to="/addrecipe">
                                     <span className="black">Add Recipes</span>
@@ -73,12 +73,12 @@ const Navbar = () => {
                                         <img className="img-fluid mx-1 logos" src="https://cdn-icons-png.flaticon.com/512/684/684831.png" alt="" />
                                     </Link>
                                 </li>
-                                <li className="nav-item">
+                                {/* <li className="nav-item">
                                     <Link className="nav-link d-flex align-items-center fontx" to="/addrecipe">
                                         <span className="text-black">Add Recipes</span>
                                         <img className="img-fluid mx-1 logos" src="https://cdn-icons-png.flaticon.com/512/2413/2413311.png" alt="" />
                                     </Link>
-                                </li>
+                                </li> */}
                                 <li className="nav-item">
                                     <Link className="nav-link d-flex align-items-center fontx" to="/contactus">
                                         <span className="black">Contact Us</span>
@@ -107,7 +107,8 @@ const Navbar = () => {
                                 )}
                                 {user && (
                                     <div className="logout-group d-flex">
-                                        <span className="nav-link -flex align-items-center fontx me-2"><small>{user.email}</small></span>
+                                        <img className="img-fluid mx-1 logos" src="https://cdn-icons-png.flaticon.com/128/747/747376.png" alt="User Icon" />
+                                        <span className="nav-link d-flex align-items-center fontx me-2"><small>{user.firstName}</small></span>
                                         <button className="nav-link btn d-flex align-items-center fontx" onClick={handleClick}>
                                             <img className="img-fluid mx-1 logos" src="https://cdn-icons-png.flaticon.com/512/9623/9623110.png" alt="" />
                                         </button>
