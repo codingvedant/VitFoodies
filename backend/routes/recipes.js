@@ -1,7 +1,7 @@
 const express = require('express');
 const { createRecipe, getRecipe, getRecipes, deleteRecipe, updateRecipe } = require('../controllers/recipeController');
 const cors = require('cors');
-const requireAuth = require('../middleware/requireAuth');
+//const requireAuth = require('../middleware/requireAuth');
 
 const router = express.Router();
 

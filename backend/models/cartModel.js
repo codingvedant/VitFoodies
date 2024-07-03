@@ -8,6 +8,10 @@ const cartItemSchema = new Schema({
         ref: 'Recipe',
         required: true
     },
+    name: {
+        type: String,
+        required: true
+    },
     quantity: {
         type: Number,
         required: true,
@@ -28,12 +32,12 @@ const cartSchema = new Schema({
     }
 });
 
-cartSchema.methods.addToCart = async function(recipeId, quantity, price) {
+cartSchema.methods.addToCart = async function(recipeId, name ,quantity, price) {
     const existingItemIndex = this.items.findIndex(item => item.recipe.toString() === recipeId.toString());
     if (existingItemIndex >= 0) {
         this.items[existingItemIndex].quantity += quantity;
     } else {
-        this.items.push({ recipe: recipeId, quantity, price });
+        this.items.push({ recipe: recipeId,name, quantity, price });
     }
     this.totalAmount += quantity * price;
     await this.save();

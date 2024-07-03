@@ -9,6 +9,13 @@ const initialCartState = {
 // Reducer function for managing cart state
 const cartReducer = (state, action) => {
     switch (action.type) {
+        case 'SET_CART':
+            // Set the cart items and total amount from the action payload
+            return {
+                ...state,
+                items: action.payload,
+                totalAmount: 0,
+            };
         case 'ADD_ITEM':
             // Logic to add item to cart
             const updatedItems = state.items.concat(action.payload);
