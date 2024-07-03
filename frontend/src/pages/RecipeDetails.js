@@ -2,31 +2,42 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 import Navbar from "./Navbar";
 import useFetch from "./useFetch";
+import { useCartContext } from "../hooks/useCartContext";
+import { useAuthContext } from "../hooks/useAuthContext";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 const RecipeDetails = () => {
     const { id } = useParams();
     const { data: recipes, isPending, error } = useFetch('http://localhost:4000/api/recipes/' + id);
     const [quantity, setQuantity] = useState(1);
+    const { dispatch } = useCartContext();
+    const {user} = useAuthContext();
 
     const handleAddToCart = () => {
-        const userId = "667bcd14d7b08bde5cf43316"; // Replace with actual user ID from auth context
+        const userId = "667bcefa220d2bc508f00127"; // Replace with actual user ID from auth context
         const newItem = {
             userId,
             recipeId: recipes._id,
-            quantity: quantity,
-        };
-
-        fetch('http://localhost:4000/api/cart/add', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(newItem),
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                console.log('Added to cart:', data);
-            });
+            quantity: parseInt(quantity, 10),
+        }; 
+        
+        if(user)
+        {
+            fetch('http://localhost:4000/api/cart/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${user.token}`
+                },
+                body: JSON.stringify(newItem),
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    console.log('Added to cart:', data);
+                    dispatch({ type: 'ADD_TO_CART', payload: data });
+                });
+        }
+        
     };
 
     return (
@@ -90,7 +101,8 @@ const RecipeDetails = () => {
                                         min="1"
                                     />
                                 </div>
-                                <button className="btn btn-dark mt-3" onClick={handleAddToCart}>Add to Cart</button>
+                                {user && (<button className="btn btn-dark mt-3" onClick={handleAddToCart}>Add to Cart</button>)}
+                                {!user && (<Link to="/login"className="btn btn-dark mt-3" >Login to add</Link>)}
                             </div>
                         </div>
                     </div>
