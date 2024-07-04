@@ -13,8 +13,6 @@ const useCartFetch = (url) => {
         const abortCont = new AbortController();
 
         const fetchData = async () => {
-            // const token = localStorage.getItem('token'); // Retrieve token from local storage
-
             try {
                 const res = await fetch(url, {
                     signal: abortCont.signal,
@@ -28,7 +26,7 @@ const useCartFetch = (url) => {
                 const data = await res.json();
                 setData(data);
                 // Assuming you have a dispatch action to set cart data in your context
-                dispatch({ type: 'SET_CART', items: data.items, totalAmount: data.totalAmount }); // Adjust payload as per your API response structure
+                dispatch({ type: 'SET_CART', payload:data }); // Adjust payload as per your API response structure
                 setIsPending(false);
                 setError(null);
             } catch (err) {
@@ -40,9 +38,9 @@ const useCartFetch = (url) => {
         };
 
         if(user)
-            {
-                fetchData();
-            }
+        {
+            fetchData();
+        }
 
         return () => {
             abortCont.abort();
