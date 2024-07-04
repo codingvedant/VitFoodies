@@ -49,25 +49,18 @@ const updateCartItem = async (req, res) => {
 // Remove an item from the cart
 const removeCartItem = async (req, res) => {
     const { name } = req.body;
-
+    const user_id = req.user._id
     try {
         // Find the cart
-        const cart = await Cart.findOne();
-
-        if (!cart) {
-            throw new Error('Cart not found');
-        }
-
-        // Call removeCartItem method on the cart
-        await cart.removeCartItem(name);
-
-        // Respond with updated cart
+        const cart = await Cart.removeCartItem(name,user_id);
+        
         res.status(200).json(cart);
     } catch (error) {
         console.error(error);
         res.status(400).json({ message: error.message });
     }
 }
+
 
 // Get cart items
 const getCartItems = async (req, res) => {

@@ -8,7 +8,8 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 const RecipeDetails = () => {
     const { id } = useParams();
-    const { data: recipes, isPending, error } = useFetch('http://localhost:4000/api/recipes/' + id);
+    const { data, isPending, error } = useFetch('http://localhost:4000/api/recipes/' + id);
+    const recipes = data
     const [quantity, setQuantity] = useState(1);
     const { dispatch } = useCartContext();
     const {user} = useAuthContext();
@@ -32,7 +33,7 @@ const RecipeDetails = () => {
                 .then((res) => res.json())
                 .then((data) => {
                     console.log('Added to cart:', data);
-                    dispatch({ type: 'ADD_TO_CART', payload: data });
+                    dispatch({ type: 'ADD_ITEM', payload: data });
                 });
         }
         

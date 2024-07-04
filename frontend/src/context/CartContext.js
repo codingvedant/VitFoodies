@@ -1,50 +1,18 @@
 import React, { createContext, useReducer } from 'react';
 
-// Initial state for the cart
-const initialCartState = {
-    items: [], // Array to hold cart items
-    totalAmount: 0, // Total amount in the cart
-};
-
 // Reducer function for managing cart state
 const cartReducer = (state, action) => {
     switch (action.type) {
         case 'SET_CART':
-            // Set the cart items and total amount from the action payload
-            return {
-                ...state,
-                items: action.payload,
-                totalAmount: 0,
-            };
         case 'ADD_ITEM':
-            // Logic to add item to cart
-            const updatedItems = state.items.concat(action.payload);
-            const updatedTotalAmount =
-                state.totalAmount + action.payload.price * action.payload.quantity;
-            return {
-                ...state,
-                items: updatedItems,
-                totalAmount: updatedTotalAmount,
-            };
         case 'REMOVE_ITEM':
-            // Logic to remove item from cart
-            const updatedCartItems = state.items.filter(
-                item => item.recipe !== action.payload
-            );
-            const updatedAmtAfterRemoval =
-                state.totalAmount -
-                action.payload.price * action.payload.quantity;
             return {
-                ...state,
-                items: updatedCartItems,
-                totalAmount: updatedAmtAfterRemoval,
+                cart: action.payload
             };
         case 'CLEAR_CART':
-            // Logic to clear entire cart
             return {
                 ...state,
-                items: [],
-                totalAmount: 0,
+                cart: null
             };
         default:
             return state;
@@ -56,14 +24,12 @@ export const CartContext = createContext();
 
 // CartContextProvider component
 export const CartContextProvider = ({ children }) => {
-    const [cartState, dispatch] = useReducer(cartReducer, initialCartState);
+    const [state, dispatch] = useReducer(cartReducer, { cart: null });
+    console.log(state); 
 
     return (
-        <CartContext.Provider value={{ cartState, dispatch }}>
+        <CartContext.Provider value={{ ...state, dispatch }}>
             {children}
         </CartContext.Provider>
     );
 };
-
-
-
