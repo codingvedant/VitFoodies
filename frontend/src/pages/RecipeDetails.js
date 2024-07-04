@@ -8,7 +8,7 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 const RecipeDetails = () => {
     const { id } = useParams();
-    const { data, isPending, error } = useFetch('http://localhost:4000/api/recipes/' + id);
+    const { data, isPending, error } = useFetch('https://vitfoodies.onrender.com/api/recipes/' + id);
     const recipes = data;
     const [quantity, setQuantity] = useState(1);
     const { dispatch } = useCartContext();
@@ -22,7 +22,7 @@ const RecipeDetails = () => {
         };
 
         if (user) {
-            fetch('http://localhost:4000/api/cart/add', {
+            fetch('https://vitfoodies.onrender.com/api/cart/add', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

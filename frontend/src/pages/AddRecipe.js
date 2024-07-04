@@ -16,7 +16,7 @@ const AddRecipe = () => {
 
         setIsPending(true)
 
-        fetch('http://localhost:4000/api/recipes', {
+        fetch('https://vitfoodies.onrender.com/api/recipes', {
             method: 'POST',
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(recipe)
