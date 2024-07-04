@@ -43,7 +43,7 @@ const Cart = () => {
     const handlePlaceOrder = () => {
         if (user) {
             setLoading(true);
-            fetch('https://vitfoodies.onrender.com/cart/clear', {
+            fetch('https://vitfoodies.onrender.com/api/cart/clear', {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${user.token}`
