@@ -1,14 +1,15 @@
 import React, { useContext, useState } from "react";
 import useCartFetch from "./useCartFetch";
-import { CartContext } from "../context/CartContext"; // Import CartContext
+import { CartContext } from "../context/CartContext";
 import Navbar from "../pages/Navbar";
 import { useAuthContext } from "../hooks/useAuthContext";
 
 const Cart = () => {
     const { isPending, error } = useCartFetch('http://localhost:4000/api/cart');
-    const { cart, dispatch } = useContext(CartContext); 
+    const { cart, dispatch } = useContext(CartContext);
     const { user } = useAuthContext();
     const [loading, setLoading] = useState(false);
+    const [message, setMessage] = useState('');
 
     const handleDelete = (name) => {
         if (user) {
@@ -39,6 +40,34 @@ const Cart = () => {
         }
     };
 
+    const handlePlaceOrder = () => {
+        if (user) {
+            setLoading(true);
+            fetch('http://localhost:4000/api/cart/clear', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                },
+            })
+                .then((res) => {
+                    if (!res.ok) {
+                        throw new Error('Failed to place order');
+                    }
+                    return res.json();
+                })
+                .then((data) => {
+                    console.log('Order placed:', data);
+                    dispatch({ type: 'CLEAR_CART', payload: data });
+                    setLoading(false);
+                    setMessage('Your order is successfully placed!');
+                })
+                .catch((error) => {
+                    console.error('Error placing order:', error);
+                    setLoading(false);
+                });
+        }
+    };
+
     if (isPending || loading) {
         return <div className="text-center">Loading...</div>;
     }
@@ -49,6 +78,15 @@ const Cart = () => {
 
     return (
         <div className="Cart">
+            <style>
+                {`
+                .card {
+                    transition: none; /* Remove any transition effects */
+                    box-shadow: none !important; /* Remove box-shadow */
+                    transform: none !important; /* Remove any scaling or transformation */
+                }
+                `}
+            </style>
             <Navbar />
             <div className="container">
                 <div className="row justify-content-center">
@@ -58,7 +96,7 @@ const Cart = () => {
                                 <h1 className="card-title mb-4 text-center">Shopping Cart</h1>
                                 {cart && cart.items.length > 0 ? (
                                     cart.items.map(item => (
-                                        <div className="row mb-3" key={item._id}>
+                                        <div className="row mb-3 align-items-center" key={item._id}>
                                             <div className="col">
                                                 <h5>{item.name}</h5>
                                             </div>
@@ -85,9 +123,14 @@ const Cart = () => {
                                             <h5>Total: ₹{cart.totalAmount.toFixed(2)}</h5>
                                         </div>
                                         <div className="text-center mt-4">
-                                            <button className="btn btn-primary">Place Order</button>
+                                            <button className="btn btn-primary" onClick={handlePlaceOrder}>Place Order</button>
                                         </div>
                                     </>
+                                )}
+                                {message && (
+                                    <div className="text-center mt-4 alert alert-success">
+                                        {message}
+                                    </div>
                                 )}
                             </div>
                         </div>
@@ -99,5 +142,3 @@ const Cart = () => {
 };
 
 export default Cart;
-
-

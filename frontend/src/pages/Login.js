@@ -54,9 +54,6 @@ function Login() {
                 </button>
                 {error && <div className="error">{error}</div>}
               </div>
-              <p className="text-center mt-2">
-                Forgot <a href="/">password?</a>
-              </p>
             </div>
           </form>
       </div>
