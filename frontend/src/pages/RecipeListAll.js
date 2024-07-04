@@ -2,7 +2,7 @@ import useFetch from './useFetch'
 import { Link } from 'react-router-dom';
 
 const RecipeListAll = () => {
-    const { data, isPending, error } = useFetch('http://localhost:4000/api/recipes');
+    const { data, isPending, error } = useFetch('https://vitfoodies.onrender.com/api/recipes');
     const recipes = data
 
     return (
