@@ -85,6 +85,20 @@ cartSchema.statics.removeCartItem = async function(name, user_id) {
     return cart;
 };
 
+// Add this to the cartSchema.statics
+cartSchema.statics.clearCart = async function(user_id) {
+    let cart = await this.findOne({ user_id });
+    if (!cart) {
+        throw new Error('Cart not found');
+    }
+
+    cart.items = [];
+    cart.totalAmount = 0;
+
+    await cart.save();
+    return cart;
+};
+
 // Create and export the model
 const Cart = mongoose.model('Cart', cartSchema);
 module.exports = Cart;
