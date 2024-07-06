@@ -8,6 +8,7 @@ import AddRecipe from './pages/AddRecipe';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Cart from './pages/Cart';
+import ContactUs from './pages/ContactUs';
 
 function App() {
   const { user } = useAuthContext();
@@ -25,7 +26,7 @@ function App() {
               <AllRecipes />
             </Route>
             <Route exact path="/contactus">
-              <RecipeDetails />
+              <ContactUs />
             </Route>
             <Route exact path="/recipes/:id">
               <RecipeDetails />
