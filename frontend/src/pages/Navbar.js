@@ -46,12 +46,6 @@ const Navbar = () => {
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link d-flex align-items-center" to="/addrecipe">
-                                    <span className="black">Add Recipes</span>
-                                    <img className="img-fluid mx-1 logos" src="https://cdn-icons-png.flaticon.com/512/2413/2413311.png" alt="Add Recipes Icon" />
-                                </Link>
-                            </li>
-                            <li className="nav-item">
                                 <Link className="nav-link d-flex align-items-center" to="/contactus">
                                     <span className="black">Contact Us</span>
                                     <img className="img-fluid mx-1 logos" src="https://cdn-icons-png.flaticon.com/512/2354/2354127.png" alt="Contact Us Icon" />
