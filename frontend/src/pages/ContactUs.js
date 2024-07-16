@@ -14,7 +14,7 @@ const ContactUs = () => {
                         <div className="col-lg-6">
                             <section className="contact-info">
                                 <h4 className="h-2">Our Location:</h4>
-                                <p>123 Campus Street, City, Country</p>
+                                <p>123 Campus Street, Mumbai, India</p>
 
                                 <h4 className="h-2">Email Us:</h4>
                                 <p>info@vitfoodies.com</p>
