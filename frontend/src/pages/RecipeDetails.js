@@ -55,20 +55,20 @@ const RecipeDetails = () => {
                     <div className="container-lg">
                         <div className="mt-4 detailcontainer border overflow-hidden p-3 rounded-3">
                             <div className="text-center mb-4">
-                                <img src={recipes.img} alt="" className="img-fluid" style={{ width: '40%', height: '15rem', maxWidth: '100%', maxHeight: '100%' }} />
+                                <img src={recipes.img} alt={recipes.name} className="img-fluid" style={{ width: '40%', height: '15rem', maxWidth: '100%', maxHeight: '100%' }} />
                             </div>
                             <div className="fs-2 p-3 fw-semibold text-center">{recipes.name}</div>
                             <div className="fs-5 fst-italic fw-lighter pb-3 border-bottom-dashed text-center">Recipe By {recipes.chef}</div>
                             <div className="text-center py-3">
-                                <span className="fs-5">Course: <b className="fw-bolder">Breakfast</b> /</span>
-                                <span className="fs-5"> Cuisine:<b className="fw-bolder"> American</b></span>
+                                <span className="fs-5">Course: <b className="fw-bolder">{recipes.course}</b> /</span>
+                                <span className="fs-5"> Cuisine:<b className="fw-bolder"> {recipes.cuisine}</b></span>
                             </div>
 
                             <div className="card-group">
                                 <div className="infocards card">
                                     <div className="card-body">
                                         <h5 className="card-title text-center">Servings</h5>
-                                        <p className="card-text text-center">4 Servings</p>
+                                        <p className="card-text text-center">{recipes.servings} Servings</p>
                                     </div>
                                 </div>
                                 <div className="infocards card">
