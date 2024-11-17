@@ -100,8 +100,81 @@ Vit Foodies is a user-friendly, visually appealing E-Menu website built with the
   - **Email** - vedantbhalerao315@gmail.com
   - **LinkedIn** - https://www.linkedin.com/in/vedant-bhalerao/
 ## Deployment
+### Deploying on Vercel
 
-  (Instructions specific to your chosen deployment platform will be provided here. Consider popular options like Heroku, Netlify, Vercel, or AWS.)
+#### Frontend Deployment
+1. Create a Vercel account at https://vercel.com if you haven't already
+2. Install Vercel CLI globally:
+   ```sh
+   npm install -g vercel
+   ```
+3. Navigate to your frontend directory:
+   ```sh
+   cd frontend
+   ```
+4. Create a `vercel.json` file in your frontend directory:
+   ```json
+   {
+     "version": 2,
+     "builds": [
+       {
+         "src": "package.json",
+         "use": "@vercel/static-build",
+         "config": { "distDir": "build" }
+       }
+     ],
+     "routes": [
+       {
+         "src": "/(.*)",
+         "dest": "/index.html"
+       }
+     ]
+   }
+   ```
+5. Deploy to Vercel:
+   ```sh
+   vercel
+   ```
+   Follow the prompts to complete the deployment.
+
+#### Backend Deployment
+1. Navigate to your backend directory:
+   ```sh
+   cd backend
+   ```
+2. Create a `vercel.json` file in your backend directory:
+   ```json
+   {
+     "version": 2,
+     "builds": [
+       {
+         "src": "server.js",
+         "use": "@vercel/node"
+       }
+     ],
+     "routes": [
+       {
+         "src": "/(.*)",
+         "dest": "/server.js"
+       }
+     ]
+   }
+   ```
+3. Update your frontend API configuration to use the new backend URL
+4. Add environment variables in Vercel:
+   - Go to your project settings in Vercel
+   - Navigate to the "Environment Variables" section
+   - Add your `MONGO_URI` and `SECRET`
+5. Deploy the backend:
+   ```sh
+   vercel
+   ```
+
+#### Important Notes
+- Ensure your MongoDB instance allows connections from Vercel's IP addresses
+- Update CORS settings in your backend to allow requests from your frontend domain
+- Make sure all environment variables are properly set in Vercel's dashboard
+- The frontend needs to be configured to point to the deployed backend URL
 
 
 **I hope this enhanced README.md file provides a clear and informative guide for your E-Menu website!**
