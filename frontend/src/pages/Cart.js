@@ -69,7 +69,7 @@ const Cart = () => {
     };
 
     if (isPending || loading) {
-        return <div className="text-center">Loading...</div>;
+        return <div className="text-center">Please wait for a min....</div>;
     }
 
     if (error) {
