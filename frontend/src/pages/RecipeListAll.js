@@ -8,7 +8,6 @@ const RecipeListAll = () => {
     const [selectedServings, setSelectedServings] = useState("");
     const [selectedTime, setSelectedTime] = useState("");
     const [selectedCuisine, setSelectedCuisine] = useState("");
-    const [selectedCourse, setSelectedCourse] = useState(""); // New state for course
 
     // Filter recipes based on the search query and selected dropdown filters
     const filteredRecipes = data?.filter(recipe => {
@@ -27,9 +26,7 @@ const RecipeListAll = () => {
 
         const matchesCuisine = selectedCuisine ? recipe.cuisine === selectedCuisine : true;
 
-        const matchesCourse = selectedCourse ? recipe.course === selectedCourse : true; // New course filter
-
-        return matchesSearch && matchesServings && matchesTime && matchesCuisine && matchesCourse;
+        return matchesSearch && matchesServings && matchesTime && matchesCuisine;
     });
 
     return (
@@ -54,11 +51,10 @@ const RecipeListAll = () => {
                             onChange={(e) => setSelectedServings(e.target.value)}
                         >
                             <option value="">All Servings</option>
-                            <option value="1">1 Serving</option>
                             <option value="2">2 Servings</option>
-                            <option value="3">3 Servings</option>
                             <option value="4">4 Servings</option>
-                            <option value="5">5 Servings</option>
+                            <option value="6">6 Servings</option>
+                            {/* Add more options as needed */}
                         </select>
                     </div>
 
@@ -85,23 +81,10 @@ const RecipeListAll = () => {
                             onChange={(e) => setSelectedCuisine(e.target.value)}
                         >
                             <option value="">All Cuisines</option>
-                            <option value="Indian">Indian</option>
-                            <option value="American">American</option>
                             <option value="Italian">Italian</option>
-                        </select>
-                    </div>
-
-                    {/* Course Dropdown */}
-                    <div className="col">
-                        <select 
-                            className="form-select" 
-                            value={selectedCourse} 
-                            onChange={(e) => setSelectedCourse(e.target.value)}
-                        >
-                            <option value="">All Courses</option>
-                            <option value="Breakfast">Breakfast</option>
-                            <option value="Lunch">Lunch</option>
-                            <option value="Dessert">Dessert</option>
+                            <option value="Chinese">Chinese</option>
+                            <option value="Indian">Indian</option>
+                            {/* Add more options based on your available cuisines */}
                         </select>
                     </div>
                 </div>
