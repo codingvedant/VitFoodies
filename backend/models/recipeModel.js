@@ -26,18 +26,6 @@ const recipeSchema = new Schema({
     about: {  // New field added
         type: String,
         required: true
-    },
-    cuisine: {  // New field
-        type: String,
-        required: true
-    },
-    servings: { // New field
-        type: Number,
-        required: true
-    },
-    course: {   // New field
-        type: String,
-        required: true
     }
 }, { timestamps: true });
 

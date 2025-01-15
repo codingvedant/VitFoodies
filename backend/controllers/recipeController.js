@@ -31,16 +31,15 @@ const getRecipe = async (req, res) => {
 };
 
 const createRecipe = async (req, res) => {
-    const { name, chef, time, img, price, about, cuisine, servings, course } = req.body;
+    const { name, chef, time, img, price, about } = req.body;
 
     try {
-        const recipe = await Recipe.create({ name, chef, time, img, price, about, cuisine, servings, course });
+        const recipe = await Recipe.create({ name, chef, time, img, price, about });
         res.status(200).json(recipe);
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
 };
-
 
 const deleteRecipe = async (req, res) => {
     const { id } = req.params;
