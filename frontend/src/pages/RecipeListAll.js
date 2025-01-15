@@ -108,7 +108,7 @@ const RecipeListAll = () => {
             </div>
 
             <div className="row my-1 justify-content-evenly">
-                {isPending && <div className="px-10 fs-3 most">Loading....</div>}
+                {isPending && <div className="px-10 fs-3 most">Please wait for a min....</div>}
                 {error && <div className="px-10 fs-3 most">{error}</div>}
                 {filteredRecipes && filteredRecipes.map((recipe) => (
                     <div key={recipe._id} className="carddiv col-xl-3 col-lg-3 col-md-4 col-sm-6 col-8 align-items-sm-center">
