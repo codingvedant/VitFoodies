@@ -1,8 +1,10 @@
 import useFetch from './useFetch'
 import { Link } from 'react-router-dom';
+
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 const RecipeList = () => {
 
-    const {data:recipes,isPending,error} = useFetch('https://vitfoodies.onrender.com/api/recipes')
+    const {data:recipes,isPending,error} = useFetch(`${API_BASE_URL}/recipes`)
 
 
     return ( 

@@ -4,8 +4,10 @@ import { CartContext } from "../context/CartContext";
 import Navbar from "../pages/Navbar";
 import { useAuthContext } from "../hooks/useAuthContext";
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 const Cart = () => {
-    const { isPending, error } = useCartFetch('https://vitfoodies.onrender.com/api/cart');
+    const { isPending, error } = useCartFetch(`${API_BASE_URL}/cart`);
     const { cart, dispatch } = useContext(CartContext);
     const { user } = useAuthContext();
     const [loading, setLoading] = useState(false);
@@ -14,7 +16,7 @@ const Cart = () => {
     const handleDelete = (name) => {
         if (user) {
             setLoading(true);
-            fetch('https://vitfoodies.onrender.com/api/cart/remove', {
+            fetch(`${API_BASE_URL}/cart/remove`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -43,7 +45,7 @@ const Cart = () => {
     const handlePlaceOrder = () => {
         if (user) {
             setLoading(true);
-            fetch('https://vitfoodies.onrender.com/api/cart/clear', {
+            fetch(`${API_BASE_URL}/cart/clear`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${user.token}`

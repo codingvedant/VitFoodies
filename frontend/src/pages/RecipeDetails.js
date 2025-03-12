@@ -6,9 +6,11 @@ import { useCartContext } from "../hooks/useCartContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 const RecipeDetails = () => {
     const { id } = useParams();
-    const { data, isPending, error } = useFetch('https://vitfoodies.onrender.com/api/recipes/' + id);
+    const { data, isPending, error } = useFetch(`${API_BASE_URL}/recipes/` + id);
     const recipes = data;
     const [quantity, setQuantity] = useState(1);
     const { dispatch } = useCartContext();
@@ -22,7 +24,7 @@ const RecipeDetails = () => {
         };
 
         if (user) {
-            fetch('https://vitfoodies.onrender.com/api/cart/add', {
+            fetch(`${API_BASE_URL}/cart/add`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

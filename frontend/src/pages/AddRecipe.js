@@ -2,6 +2,9 @@ import Navbar from "./Navbar";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
+
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 const AddRecipe = () => {
     const [name,setName]= useState('');
     const [chef,setChef]= useState('');
@@ -16,7 +19,7 @@ const AddRecipe = () => {
 
         setIsPending(true)
 
-        fetch('https://vitfoodies.onrender.com/api/recipes', {
+        fetch(`${API_BASE_URL}/recipes`, {
             method: 'POST',
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(recipe)

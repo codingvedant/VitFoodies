@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useAuthContext } from './useAuthContext';
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 export const useSignup = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -11,7 +13,7 @@ export const useSignup = () => {
     setError(null);
 
     try {
-      const response = await fetch('https://vitfoodies.onrender.com/api/user/signup', {
+      const response = await fetch(`${API_BASE_URL}/user/signup`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ firstName, lastName, email, password, phoneNumber })

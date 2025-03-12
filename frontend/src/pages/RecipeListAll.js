@@ -2,8 +2,9 @@ import useFetch from './useFetch';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 const RecipeListAll = () => {
-    const { data, isPending, error } = useFetch('https://vitfoodies.onrender.com/api/recipes');
+    const { data, isPending, error } = useFetch(`${API_BASE_URL}/recipes`);
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedServings, setSelectedServings] = useState("");
     const [selectedTime, setSelectedTime] = useState("");
